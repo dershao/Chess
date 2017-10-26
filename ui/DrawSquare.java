@@ -14,7 +14,9 @@ public class DrawSquare extends JPanel {
 		// TODO Auto-generated method stub
 		super.paintComponent(g);
 
+		//set color of component as BROWN
 		g.setColor(Color.decode("#852A2A"));
+		//set size as 100 x 100
 		g.fillRect(0, 0, 100, 100);
 	}
 	

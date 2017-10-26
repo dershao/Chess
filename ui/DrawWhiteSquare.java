@@ -8,19 +8,18 @@ import java.util.ArrayList;
 
 public class DrawWhiteSquare extends JPanel {
 	
-
 	@Override
 	protected void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
 		super.paintComponent(g);
-
+		
+		//set color of component as WHITE
 		g.setColor(Color.decode("#FFFFFF"));
+		//set size 100 x 100
 		g.fillRect(0, 0, 100, 100);
 	}
 	
 	public DrawWhiteSquare() {
+		//call super constructor
 		super();
-		
 	}
-	
 }
