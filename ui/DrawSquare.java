@@ -4,25 +4,34 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class DrawSquare extends JPanel {
 	
+	private int row;
+	private char col;
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
 		super.paintComponent(g);
-
-		//set color of component as BROWN
-		g.setColor(Color.decode("#852A2A"));
-		//set size as 100 x 100
-		g.fillRect(0, 0, 100, 100);
 	}
 	
-	public DrawSquare() {
-		super();
+	public DrawSquare(int color, int row, char col) {
 		
+		if (color == 1) {
+			//dark brown color
+			setBackground(Color.decode("#852A2A"));
+		}
+		else {
+			//beige color
+			setBackground(Color.decode("#F5F5DC"));
+		}
+		
+		this.row = row;
+		this.col = col;
 	}
 	
+	public String getCoordinate() {
+		
+		return Character.toString(col) + row;
+	}
 }

@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.GridLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 
@@ -9,7 +10,7 @@ public class Board extends JFrame {
 	public static final int ROWS = 8;
 	public static final int COLS = 8;
 	private JPanel panel; 
-	private JPanel [] squares;
+	private JPanel [][] squares;
 	
 	public Board() {
 		super("Chess");
@@ -19,26 +20,26 @@ public class Board extends JFrame {
 		setLocationRelativeTo(null);
 			   
 		panel = new JPanel();
-		squares = new JPanel[64];
+		squares = new JPanel[8][8];
 		panel.setLayout(new GridLayout(ROWS, COLS));
 		
 		for (int i = 0; i < ROWS; i++) {
-			makeBoardRow(i % 2);
-		}	   	   
+			makeBoardRow(i, i % 2);
+		}	   	 
+		
 		add(panel);
 
 		setVisible(true);
     }
 	
-	private void makeBoardRow(int startingColor) {
-		for (int i = 0; i < COLS; i++) {
-			if ( (i + startingColor) % 2 == 0) {
-				squares[i] = new DrawWhiteSquare();
-			}
-			else {
-				squares[i] = new DrawSquare();
-			}
-			panel.add(squares[i]);
+	private void makeBoardRow(int currentRow, int startingColor) {
+		
+		//ascii value of letter 'a' - used for generating board column identifier
+		int columnLabel = 97;
+		
+		for (int j = 0; j < COLS; j++) {
+			squares[currentRow][j] = new DrawSquare( (j + startingColor) % 2, currentRow + 1 , (char) (columnLabel + j));
+			panel.add(squares[currentRow][j]);
 		}
 	}
 }
